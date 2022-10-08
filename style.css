@@ -8,7 +8,7 @@
 .dino {
   width: 50px;
   height: 50px;
-  background-image: url('asset/Image/trex.png');
+  background-image: url('https://stackblitz.com/files/react-dino/github/simonesanna1983/react-dino/main/asset/Image/trex.png');
   background-size: 50px 50px;
   position: relative;
   top: 150px;
@@ -47,7 +47,7 @@
   top: 110px;
   left: 580px;
 
-  background-image: url('asset/Image/cactus.png');
+  background-image: url('https://stackblitz.com/files/react-dino/github/simonesanna1983/react-dino/main/asset/Image/cactus.png');
   background-size: 20px 40px;
 
   animation: block 1s infinite linear;

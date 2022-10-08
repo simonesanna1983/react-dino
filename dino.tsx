@@ -20,8 +20,6 @@ export default function Dino(prop: props) {
   // }
 
   return (
-    <div id="dino" className={prop.isJumping ? 'jump' : 'dino'}>
-      A
-    </div>
+    <div id="dino" className={prop.isJumping ? 'dino jump' : 'dino'}></div>
   );
 }
