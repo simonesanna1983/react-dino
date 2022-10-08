@@ -1,11 +1,13 @@
 import * as React from 'react';
+import Dino from './dino';
 import './style.css';
 
 export default function App() {
   return (
-    <div>
-      <h1>Hello StackBlitz!</h1>
-      <p>Start editing to see some magic happen :)</p>
+    <div className="game">
+      {/* <div id="dino"></div> */}
+      <Dino isJumping={true}></Dino>
+      <div id="cactus"></div>
     </div>
   );
 }
