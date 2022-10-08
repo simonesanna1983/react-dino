@@ -4,12 +4,23 @@ import Dino from './dino';
 import './style.css';
 
 export default function App() {
-  const [jump, setJump] = useState(true);
+  const [jump, setJump] = useState(false);
 
   return (
-    <div className="game">
+    <div
+      className="game"
+      onClick={() => {
+        setJump(true);
+      }}
+    >
       {/* <div id="dino"></div> */}
-      <Dino isJumping={jump}></Dino>
+      <Dino
+        isJumping={jump}
+        dinoCallback={() => {
+          console.log('callback', jump);
+          setJump(false);
+        }}
+      ></Dino>
       <div id="cactus"></div>
     </div>
   );
