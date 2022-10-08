@@ -4,7 +4,7 @@ import Dino from './dino';
 import './style.css';
 
 export default function App() {
-  const [jump, setJump] = useState(false);
+  const [jump, setJump] = useState(true);
 
   return (
     <div className="game">
