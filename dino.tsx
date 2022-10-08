@@ -4,19 +4,17 @@ import './style.css';
 
 interface props {
   isJumping: boolean;
-  dinoCallback?: () => void;
+  dinoCallback: () => void;
 }
 
 export default function Dino(prop: props) {
-  const [jump, setJump] = useState(false);
-
   useEffect(() => {
     if (prop.isJumping) {
       setTimeout(() => {
         prop.dinoCallback();
       }, 500);
     }
-  }, []);
+  }, [prop.isJumping]);
 
   // function jump() {
   //   if (dino.classList != "jump") {
