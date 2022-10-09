@@ -1,17 +1,20 @@
 import * as React from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './style.css';
 
 interface props {
   isJumping: boolean;
-  dinoCallback: () => void;
+  dinoJumpCallback: () => void;
+  dinoCallback: (dinoPosition: number) => void;
 }
 
 export default function Dino(prop: props) {
+  const dinoRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     if (prop.isJumping) {
       setTimeout(() => {
-        prop.dinoCallback();
+        prop.dinoJumpCallback();
       }, 500);
     }
   }, [prop.isJumping]);
@@ -25,6 +28,14 @@ export default function Dino(prop: props) {
   //     }, 300);
   //   }
   // }
+
+  const checkDino = () => {
+    const dinoTop = dinoRef?.current?.offsetLeft;
+
+    prop.dinoCallback(dinoTop);
+  };
+
+  setInterval(checkDino, 200);
 
   return (
     <div id="dino" className={prop.isJumping ? 'dino jump' : 'dino'}></div>
