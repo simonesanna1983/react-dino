@@ -20,7 +20,7 @@ export default function Cactus(prop: props) {
   const checkCactus = () => {
     const cactusLeft = window
       .getComputedStyle(cactusRef.current, null)
-      .getPropertyValue('font-size');
+      .getPropertyValue('left');
 
     // const cactusLeft = cactusRef?.current?.offsetLeft;
     // if (cactusLeft < 200) console.log('checkCactus', cactusLeft);
