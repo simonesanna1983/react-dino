@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useRef, useState } from 'react'; //
+import { useEffect, useRef, useState } from 'react'; //
 import Cactus from './cactus';
 import Dino from './dino';
 import './style.css';
@@ -9,6 +9,17 @@ export default function App() {
   const [gameOver, setGameOver] = useState(false);
   const dinoTop = useRef(150);
 
+  useEffect(() => {
+    window.addEventListener('keypress', handleKeyDown);
+  }, []);
+
+  const handleKeyDown = (event) => {
+    console.log(event.key);
+    if (event.key === 'Space') {
+      setJump(true);
+    }
+  };
+  
   const isAlive = (cactusLeft) => {
     if (cactusLeft < 50) {
       console.log('cactusLeft', cactusLeft);
@@ -37,12 +48,6 @@ export default function App() {
         onClick={() => {
           setJump(true);
         }}
-        onKeyPress={(e) => {
-          if (e.key === 'Space') {
-            setJump(true);
-          }
-        }}
-        tabIndex={0}
       >
         {/* <div id="dino"></div> */}
         <Dino
