@@ -14,6 +14,8 @@ export default function Cactus(prop: props) {
   useEffect(() => {
     if (interv === 0) {
       setInterv(setInterval(checkCactus, 10));
+    } else {
+      clearInterval(interv);
     }
   }, []);
 
