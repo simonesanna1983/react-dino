@@ -10,13 +10,6 @@ export default function App() {
   const dinoTop = useRef(150);
 
   const isAlive = (cactusLeft) => {
-    if (cactusLeft === undefined) {
-      console.log('cactusLeft', cactusLeft);
-    }
-    if (dinoTop === undefined) {
-      console.log('dinoTop.current', dinoTop.current);
-    }
-
     if (
       cactusLeft < 50 &&
       cactusLeft > 0 &&
@@ -53,7 +46,6 @@ export default function App() {
         <Dino
           isJumping={jump}
           dinoJumpCallback={() => {
-            console.log('callback', jump);
             setJump(false);
           }}
           dinoCallback={(value) => {
@@ -61,7 +53,6 @@ export default function App() {
           }}
         ></Dino>
         <Cactus
-          isDisplayed={true}
           gameOver={gameOver}
           cactusCallback={isAlive}
         ></Cactus>

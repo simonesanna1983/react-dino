@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { Fragment, useEffect, useRef, useState } from 'react';
+import { Fragment, useEffect, useRef } from 'react';
 import './style.css';
 
 interface props {
-  isDisplayed: boolean;
   gameOver: boolean;
   cactusCallback: (cactusPosition: number) => void;
 }
@@ -14,17 +13,18 @@ export default function Cactus(prop: props) {
   const checkCactus = () => {
     const cactusLeft = cactusRef?.current?.offsetLeft;
 
+    if (prop.gameOver) {
+      clearInterval(setInt);
+    }
+
     prop.cactusCallback(cactusLeft);
   };
 
-  setInterval(checkCactus, 200);
+  const setInt = setInterval(checkCactus, 200);
 
   return (
     <Fragment>
-      <div
-        ref={cactusRef}
-        className={prop.isDisplayed && !prop.gameOver ? 'cactus' : ''}
-      ></div>
+      <div ref={cactusRef} className={!prop.gameOver ? 'cactus' : ''}></div>
     </Fragment>
   );
 }
