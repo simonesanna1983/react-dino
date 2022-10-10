@@ -18,7 +18,11 @@ export default function Cactus(prop: props) {
   }, []);
 
   const checkCactus = () => {
-    const cactusLeft = cactusRef?.current?.offsetLeft;
+    const cactusLeft = window
+      .getComputedStyle(cactusRef.current, null)
+      .getPropertyValue('font-size');
+
+    // const cactusLeft = cactusRef?.current?.offsetLeft;
     // if (cactusLeft < 200) console.log('checkCactus', cactusLeft);
 
     if (prop.gameOver) {
@@ -27,7 +31,7 @@ export default function Cactus(prop: props) {
     }
 
     if (cactusLeft) {
-      prop.cactusCallback(cactusLeft);
+      prop.cactusCallback(parseInt(cactusLeft));
     }
   };
 
