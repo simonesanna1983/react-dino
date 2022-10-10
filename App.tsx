@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useRef, useState } from 'react';
-import Cactus from './cactus';
 import Dino from './dino';
 import './style.css';
 
@@ -8,11 +7,12 @@ export default function App() {
   const [jump, setJump] = useState(false);
   const [gameOver, setGameOver] = useState(false);
   const dinoTop = useRef(150);
+  const cactusRef = useRef<HTMLDivElement>(null);
 
   const isAlive = (cactusLeft) => {
     if (
-      cactusLeft < 50 &&
-      cactusLeft > 0 &&
+      cactusRef.current.offsetLeft < 50 &&
+      cactusRef.current.offsetLeft > 0 &&
       dinoTop.current >= 140 &&
       !gameOver
     ) {
@@ -27,6 +27,20 @@ export default function App() {
     setGameOver(false);
     setJump(false);
   };
+
+  interface cactusProps {
+    gameOver: boolean;
+    cactusRef: any;
+  }
+
+  const Cactus = React.forwardRef((props: cactusProps) => {
+    return (
+      <div
+        ref={props.cactusRef}
+        className={!props.gameOver ? 'cactus' : ''}
+      ></div>
+    );
+  });
 
   return (
     <div>
@@ -52,10 +66,7 @@ export default function App() {
             dinoTop.current = value;
           }}
         ></Dino>
-        <Cactus
-          gameOver={gameOver}
-          cactusCallback={isAlive}
-        ></Cactus>
+        <Cactus gameOver={gameOver} cactusRef={cactusRef}></Cactus>
       </div>
       {gameOver && (
         <div>
