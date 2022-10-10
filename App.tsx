@@ -10,12 +10,13 @@ export default function App() {
   const dinoTop = useRef(150);
 
   const isAlive = (cactusLeft) => {
-    if (
-      cactusLeft < 50 &&
-      cactusLeft > 0 &&
-      dinoTop.current >= 140 &&
-      !gameOver
-    ) {
+    if (cactusLeft < 170) {
+      console.log('cactusLeft', cactusLeft);
+    }
+    if (cactusLeft < 170 && cactusLeft > 0) {
+      // &&
+      // dinoTop.current >= 140 &&
+      // !gameOver
       // collision
       //alert('Game Over!');
       console.log('Game Over!');
