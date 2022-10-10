@@ -30,7 +30,7 @@ export default function Dino(prop: props) {
   // }
 
   const checkDino = () => {
-    const dinoTop = dinoRef?.current?.offsetLeft;
+    const dinoTop = dinoRef?.current?.offsetTop;
 
     prop.dinoCallback(dinoTop);
   };
@@ -38,6 +38,10 @@ export default function Dino(prop: props) {
   setInterval(checkDino, 200);
 
   return (
-    <div id="dino" className={prop.isJumping ? 'dino jump' : 'dino'}></div>
+    <div
+      id="dino"
+      ref={dinoRef}
+      className={prop.isJumping ? 'dino jump' : 'dino'}
+    ></div>
   );
 }

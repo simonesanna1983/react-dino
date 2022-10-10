@@ -4,12 +4,12 @@ import './style.css';
 
 interface props {
   isDisplayed: boolean;
+  gameOver: boolean;
   cactusCallback: (cactusPosition: number) => void;
 }
 
 export default function Cactus(prop: props) {
   const cactusRef = useRef<HTMLDivElement>(null);
-  const [positionX, setPositionX] = useState();
 
   // useEffect(() => {
   //   alert(0);
@@ -26,7 +26,10 @@ export default function Cactus(prop: props) {
 
   return (
     <Fragment>
-      <div ref={cactusRef} className={prop.isDisplayed ? 'cactus' : ''}></div>
+      <div
+        ref={cactusRef}
+        className={prop.isDisplayed && !prop.gameOver ? 'cactus' : ''}
+      ></div>
     </Fragment>
   );
 }

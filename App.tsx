@@ -6,61 +6,67 @@ import './style.css';
 
 export default function App() {
   const [jump, setJump] = useState(false);
-  const cactusLeft = useRef(0);
-  const dinoTop = useRef(0);
-
-  // let isAlive = setInterval(function () {
-  //   // get current dino Y position
-  //   let dinoTop = parseInt(
-  //     window.getComputedStyle(dino).getPropertyValue('top')
-  //   );
-
-  //   // get current cactus X position
-  //   let cactusLeft = parseInt(
-  //     window.getComputedStyle(cactus).getPropertyValue('left')
-  //   );
-
-  //   // detect collision
-  //   if (cactusLeft < 50 && cactusLeft > 0 && dinoTop >= 140) {
-  //     // collision
-  //     alert('Game Over!');
-  //   }
-  // }, 10);
+  const [gameOver, setGameOver] = useState(false);
+  const dinoTop = useRef(150);
 
   const isAlive = (cactusLeft) => {
-    console.log(cactusLeft);
+    //console.log(cactusLeft);
 
-    if (cactusLeft < 50 && cactusLeft > 0 && dinoTop.current >= 140) {
+    if (
+      cactusLeft < 50 &&
+      cactusLeft > 0 &&
+      dinoTop.current >= 140 &&
+      !gameOver
+    ) {
       // collision
-      alert('Game Over!');
+      //alert('Game Over!');
+      console.log('Game Over!');
+      setGameOver(true);
     }
   };
 
+  const reset = () => {
+    setGameOver(false);
+    setJump(false);
+  };
+
   return (
-    <div
-      className="game"
-      onClick={() => {
-        setJump(true);
-      }}
-      onKeyPress={(e) => {
-        alert(0);
-        if (e.key === 'Space') {
+    <div>
+      <div
+        className="game"
+        onClick={() => {
           setJump(true);
-        }
-      }}
-    >
-      {/* <div id="dino"></div> */}
-      <Dino
-        isJumping={jump}
-        dinoJumpCallback={() => {
-          console.log('callback', jump);
-          setJump(false);
         }}
-        dinoCallback={(value) => {
-          dinoTop.current = value;
+        onKeyPress={(e) => {
+          alert(0);
+          if (e.key === 'Space') {
+            setJump(true);
+          }
         }}
-      ></Dino>
-      <Cactus isDisplayed={true} cactusCallback={isAlive}></Cactus>
+      >
+        {/* <div id="dino"></div> */}
+        <Dino
+          isJumping={jump}
+          dinoJumpCallback={() => {
+            console.log('callback', jump);
+            setJump(false);
+          }}
+          dinoCallback={(value) => {
+            dinoTop.current = value;
+          }}
+        ></Dino>
+        <Cactus
+          isDisplayed={true}
+          gameOver={gameOver}
+          cactusCallback={isAlive}
+        ></Cactus>
+      </div>
+      {gameOver && (
+        <div>
+          <span>* * G A M E - O V E R * *</span>
+          <button onClick={reset}>Try again</button>
+        </div>
+      )}
     </div>
   );
 }
