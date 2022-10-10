@@ -13,12 +13,14 @@ export default function App() {
     if (cactusLeft < 90) {
       console.log('cactusLeft', cactusLeft);
     }
-    if (cactusLeft < 90 && cactusLeft > 0) {
-      // &&
-      // dinoTop.current >= 140 &&
-      // !gameOver
+    if (
+      cactusLeft < 90 &&
+      cactusLeft > 0 &&
+      dinoTop.current >= 140 &&
+      !gameOver
+    ) {
       // collision
-      //alert('Game Over!');
+      alert('Game Over!');
       console.log('Game Over!');
       // setGameOver(true);
     }
