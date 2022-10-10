@@ -10,7 +10,12 @@ export default function App() {
   const dinoTop = useRef(150);
 
   const isAlive = (cactusLeft) => {
-    //console.log(cactusLeft);
+    if (cactusLeft === undefined) {
+      console.log('cactusLeft', cactusLeft);
+    }
+    if (dinoTop === undefined) {
+      console.log('dinoTop.current', dinoTop.current);
+    }
 
     if (
       cactusLeft < 50 &&
