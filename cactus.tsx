@@ -13,12 +13,13 @@ export default function Cactus(prop: props) {
 
   useEffect(() => {
     if (interv === 0) {
-      setInterv(setInterval(checkCactus, 200));
+      setInterv(setInterval(checkCactus, 10));
     }
   }, []);
 
   const checkCactus = () => {
     const cactusLeft = cactusRef?.current?.offsetLeft;
+    // if (cactusLeft < 200) console.log('checkCactus', cactusLeft);
 
     if (prop.gameOver) {
       console.log('clear', interv);
