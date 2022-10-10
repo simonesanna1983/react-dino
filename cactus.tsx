@@ -11,11 +11,6 @@ interface props {
 export default function Cactus(prop: props) {
   const cactusRef = useRef<HTMLDivElement>(null);
 
-  // useEffect(() => {
-  //   alert(0);
-  //   prop.cactusCallback(cactusRef?.current?.offsetLeft);
-  // }, [cactusRef]);
-
   const checkCactus = () => {
     const cactusLeft = cactusRef?.current?.offsetLeft;
 

@@ -38,11 +38,11 @@ export default function App() {
           setJump(true);
         }}
         onKeyPress={(e) => {
-          alert(0);
           if (e.key === 'Space') {
             setJump(true);
           }
         }}
+        tabIndex={0}
       >
         {/* <div id="dino"></div> */}
         <Dino
