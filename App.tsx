@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useRef, useState } from 'react';
+import { useRef, useState } from 'react'; //
 import Cactus from './cactus';
 import Dino from './dino';
 import './style.css';
@@ -20,9 +20,8 @@ export default function App() {
       !gameOver
     ) {
       // collision
-      alert('Game Over!');
       console.log('Game Over!');
-      // setGameOver(true);
+      setGameOver(true);
     }
   };
 

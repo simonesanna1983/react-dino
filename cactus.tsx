@@ -25,10 +25,10 @@ export default function Cactus(prop: props) {
     // const cactusLeft = cactusRef?.current?.offsetLeft;
     // if (cactusLeft < 200) console.log('checkCactus', cactusLeft);
 
-    if (prop.gameOver) {
-      console.log('clear', interv);
-      clearInterval(interv);
-    }
+    // if (prop.gameOver) {
+    //   console.log('clear', interv);
+    //   clearInterval(interv);
+    // }
 
     if (cactusLeft) {
       prop.cactusCallback(parseInt(cactusLeft));
