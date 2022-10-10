@@ -25,7 +25,9 @@ export default function Cactus(prop: props) {
       clearInterval(interv);
     }
 
-    prop.cactusCallback(cactusLeft);
+    if (cactusLeft) {
+      prop.cactusCallback(cactusLeft);
+    }
   };
 
   return (
