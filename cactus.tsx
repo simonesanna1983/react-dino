@@ -1,35 +1,36 @@
-// import * as React from 'react';
-// import { Fragment, useEffect, useRef } from 'react';
-// import './style.css';
+import * as React from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
+import './style.css';
 
-// interface props {
-//   gameOver: boolean;
-//   cactusCallback: (cactusPosition: number) => void;
-// }
+interface props {
+  gameOver: boolean;
+  cactusCallback: (cactusPosition: number) => void;
+}
 
-// export default function Cactus(prop: props) {
-//   const cactusRef = useRef<HTMLDivElement>(null);
+export default function Cactus(prop: props) {
+  const cactusRef = useRef<HTMLDivElement>(null);
+  const [interv, setInterv] = useState(0);
 
-//   let setInt;
+  useEffect(() => {
+    if (interv === 0) {
+      setInterv(setInterval(checkCactus, 200));
+    }
+  }, []);
 
-//   useEffect(() => {
-//     setInt = setInterval(checkCactus, 200);
-//   }, []);
+  const checkCactus = () => {
+    const cactusLeft = cactusRef?.current?.offsetLeft;
 
-//   const checkCactus = () => {
-//     const cactusLeft = cactusRef?.current?.offsetLeft;
+    if (prop.gameOver) {
+      console.log('clear', interv);
+      clearInterval(interv);
+    }
 
-//     if (prop.gameOver) {
-//       console.log('clear', setInt);
-//       clearInterval(setInt);
-//     }
+    prop.cactusCallback(cactusLeft);
+  };
 
-//     prop.cactusCallback(cactusLeft);
-//   };
-
-//   return (
-//     <Fragment>
-//       <div ref={cactusRef} className={!prop.gameOver ? 'cactus' : ''}></div>
-//     </Fragment>
-//   );
-// }
+  return (
+    <Fragment>
+      <div ref={cactusRef} className={!prop.gameOver ? 'cactus' : ''}></div>
+    </Fragment>
+  );
+}

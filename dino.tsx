@@ -11,6 +11,7 @@ interface props {
 export default function Dino(prop: props) {
   const dinoRef = useRef<HTMLDivElement>(null);
 
+  console.log('isJumping', prop.isJumping);
   useEffect(() => {
     if (prop.isJumping) {
       setTimeout(() => {
