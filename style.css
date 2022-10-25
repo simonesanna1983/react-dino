@@ -18,6 +18,10 @@
   animation: jump 0.3s linear;
 }
 
+.game-over {
+  text-align: center;
+}
+
 @keyframes jump {
   0% {
     top: 150px;

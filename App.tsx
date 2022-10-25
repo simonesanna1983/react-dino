@@ -19,7 +19,7 @@ export default function App() {
       setJump(true);
     }
   };
-  
+
   const isAlive = (cactusLeft) => {
     if (cactusLeft < 50) {
       console.log('cactusLeft', cactusLeft);
@@ -62,7 +62,7 @@ export default function App() {
         <Cactus gameOver={gameOver} cactusCallback={isAlive}></Cactus>
       </div>
       {gameOver && (
-        <div>
+        <div className="game-over">
           <span>* * G A M E - O V E R * *</span>
           <button onClick={reset}>Try again</button>
         </div>
